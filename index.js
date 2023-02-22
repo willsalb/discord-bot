@@ -40,6 +40,23 @@ client.login(TOKEN);
 
 //Listener para interagir com o bot
 client.on(Events.InteractionCreate, async interaction => {
+
+    //Verificando se a interação é com o menu
+    if(interaction.isStringSelectMenu()) { 
+        const selectValue = interaction.values[0];
+
+        if(selectValue == "JavaScript") {
+            await interaction.reply("Doc: https://developer.mozilla.org/en-US/docs/Web/JavaScript");
+        } else if(selectValue == "Python") {
+            await interaction.reply("Doc: https://docs.python.org/3/");
+        } else if(selectValue == "csharp") {
+            await interaction.reply("Doc: https://learn.microsoft.com/en-us/dotnet/csharp/");
+        } else if(selectValue == "Java") {
+            await interaction.reply("Doc: https://dev.java/learn/");
+        }
+    }
+
+
     //Validando só para receber inputs de comando
     if(!interaction.isChatInputCommand()) {
         return
